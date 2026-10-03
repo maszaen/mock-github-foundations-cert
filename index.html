@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Foundations — Certification Assessment</title>
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="bg-ambient-glow"></div>
+
+  <!-- Main Compact Card Container -->
+  <main class="app-container">
+    
+    <!-- Top Section (Header, Dynamic Folders Carousel, Action Bar) -->
+    <section class="app-top-section">
+      
+      <!-- Top Row: Avatar & Profile Info + Action Icon -->
+      <div class="header-row">
+        <div class="profile-group">
+          <div class="avatar-badge" title="GitHub Foundations Assessment">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <div class="avatar-online-dot"></div>
+          </div>
+          <div class="profile-info">
+            <h1 class="profile-title">GitHub Foundations</h1>
+            <span class="profile-subtitle" id="totalQuestionsHeader">Official Assessment • 75 Questions</span>
+          </div>
+        </div>
+        
+        <!-- Header Info Button -->
+        <button class="header-action-btn" title="Exam Information & Domain Blueprint" onclick="showExamGuideModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dynamic Horizontal Folder Carousel with Navigation Arrows & Linear Gradient Fades -->
+      <div class="folders-track-wrapper">
+        <div class="carousel-fade-edge left" id="fadeEdgeLeft"></div>
+        <div class="carousel-fade-edge right" id="fadeEdgeRight"></div>
+
+        <button class="carousel-arrow prev" id="carouselPrev" onclick="scrollCarousel(-1)" title="Scroll left" aria-label="Scroll left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="folders-track" id="foldersTrack">
+          <!-- Dynamically populated by app.js -->
+        </div>
+
+        <button class="carousel-arrow next" id="carouselNext" onclick="scrollCarousel(1)" title="Scroll right" aria-label="Scroll right">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Action Bar (Matches "Add Folder" pill button in screenshot) -->
+      <div class="middle-action-bar">
+        <button class="pill-action-btn" onclick="jumpToUnanswered()" title="Navigate to the first unanswered question">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          <span>Jump to Unanswered</span>
+        </button>
+        
+        <!-- Live Countdown Timer -->
+        <div class="timer-pill-badge" onclick="toggleTimer()" title="Click to pause or resume timer">
+          <div class="timer-dot"></div>
+          <span id="timerDisplay">45:00</span>
+        </div>
+
+        <!-- Overall Exam Analytics & Weighted Summary Button -->
+        <button class="pill-action-btn" style="flex: 0 0 40px; padding: 0;" onclick="showOverallSummaryModal()" title="Overall Exam Readiness & Weighted Summary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+        </button>
+
+        <button class="pill-action-btn" style="flex: 0 0 40px; padding: 0;" onclick="retakeSession()" title="Reset Current Session">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Scalloped Ticket Edge Divider -->
+    <div class="scalloped-divider"></div>
+
+    <!-- Lower Section: Question Items List -->
+    <section class="app-bottom-section">
+      
+      <!-- Section Title & Status Header -->
+      <div class="section-header-row">
+        <h2 class="section-title" id="sessionTitle">Session 1: Core & Collaboration</h2>
+        <div class="section-tools">
+          <span class="progress-text-badge" id="answeredProgressBadge">0/15 Answered</span>
+          <button class="filter-icon-btn" id="searchToggleBtn" onclick="toggleSearchBar()" title="Search Questions in Current Session">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Real-Time Search Bar -->
+      <div class="search-bar-wrapper" id="searchBarWrapper" style="display: none;">
+        <svg class="search-bar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" class="search-input-field" placeholder="Search questions, options, or topics..." autocomplete="off">
+        <button type="button" class="search-clear-btn" id="searchClearBtn" onclick="clearSearch()" title="Clear search" style="display: none;">&times;</button>
+      </div>
+
+      <!-- Filter Chips (Visible after submit) -->
+      <div class="filter-chips-container" id="filterChipsContainer" style="display: none;"></div>
+
+      <!-- Questions Container -->
+      <div id="questionsContainer"></div>
+
+    </section>
+
+  </main>
+
+  <!-- Sticky Bottom Action Button -->
+  <aside class="sticky-bottom-action">
+    <button class="dark-pill-submit-btn" id="submitBtn">
+      <span id="submitBtnText">Submit Session 1 (0/15)</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="session1.js"></script>
+  <script src="session2.js"></script>
+  <script src="session3.js"></script>
+  <script src="session4.js"></script>
+  <script src="session5.js"></script>
+  <script src="modal.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
