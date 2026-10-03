@@ -1079,6 +1079,14 @@ function attachEvents() {
   foldersTrackEl.addEventListener('scroll', updateCarouselArrows);
   window.addEventListener('resize', updateCarouselArrows);
 
+  // Guarantee state is saved when closing tab or minimizing browser
+  window.addEventListener('beforeunload', saveStateToStorage);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      saveStateToStorage();
+    }
+  });
+
   if (searchInput) {
     searchInput.addEventListener('input', handleSearchInput);
     searchInput.addEventListener('keydown', (e) => {
