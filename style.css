@@ -1000,21 +1000,34 @@ body {
   background: #0550ae;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   body {
-    padding: 12px 8px 24px 8px;
+    padding: 0;
+    background: #ffffff;
+  }
+  
+  .bg-ambient-glow {
+    display: none;
   }
   
   .app-container {
-    border-radius: 24px;
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
   
   .app-top-section {
-    padding: 18px 16px 14px 16px;
+    padding: 16px 16px 14px 16px;
   }
   
   .app-bottom-section {
-    padding: 14px 14px 18px 14px;
+    padding: 14px 14px 20px 14px;
+  }
+  
+  .sticky-bottom-action {
+    width: calc(100% - 24px);
+    bottom: 12px;
   }
   
   .folder-card {
